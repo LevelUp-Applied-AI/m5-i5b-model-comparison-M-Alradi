@@ -35,6 +35,35 @@ Your PR description must include:
 3. Paste your PR URL into TalentLMS → Module 5 Week B → Integration Task to submit this assignment.
 
 ---
+## Challenges
+
+## ModelSelector Design
+
+This framework allows running model experiments using a JSON config file.
+
+### How it works
+- Models are defined in a config file (type + parameters)
+- A registry maps model names to sklearn classes
+- The system loops over models and runs cross-validation
+- Results are saved automatically in a timestamped folder
+
+### Adding a new model
+1. Add the model to MODEL_REGISTRY:
+   e.g. "SVC": sklearn.svm.SVC
+
+2. Add it to the config file:
+   {
+     "name": "SVM",
+     "type": "SVC",
+     "params": [{"C": 1.0}]
+   }
+
+No changes to core code are needed.
+
+### Output
+Each run creates:
+- results/experiment_<timestamp>/
+  - results.csv
 
 ## License
 
